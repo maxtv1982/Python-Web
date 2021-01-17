@@ -1,0 +1,85 @@
+####
+# просмотр пользователь
+GET http://127.0.0.1:5000/api/users/6
+content-type: application/json
+####
+
+####
+# регистрация1
+POST http://127.0.0.1:5000/api/login/
+content-type: application/json
+
+{
+  "username": "tester1",
+  "email": "ma@mail.ru",
+  "password": "111qwerty2"
+}
+####"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzI2NTIsIm5iZiI6MTYwODM3MjY1MiwianRpIjoiMTNmZTE5YWYtODJmNC00ODZlLTk1MTAtNGFlZDdiNTVmOWNmIiwiZXhwIjoxNjA4OTc3NDUyLCJpZGVudGl0eSI6IjYiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.8vAw77f_UIgadWJqoIj8Zz844Ya2rF4paS1_67BbM0E"
+
+####
+# регистрация2
+POST http://127.0.0.1:5000/api/login/
+content-type: application/json
+
+{
+  "username": "tester2",
+  "email": "max@mail.ru",
+  "password": "11qwerty2"
+}
+####eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzQ4NjYsIm5iZiI6MTYwODM3NDg2NiwianRpIjoiZjk4N2QxNDYtZTlhZi00MTRhLTkyNjktMjJhZWM0ZjQwN2MxIiwiZXhwIjoxNjA4OTc5NjY2LCJpZGVudGl0eSI6IjgiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.BcVhXXTJJT9y9S-P5MNon4WDLUCjImKJvQp3LL_AgkE
+
+
+####
+# просморт всех объявлений
+GET http://127.0.0.1:5000/api/posts/
+content-type: application/json
+####
+
+####
+# просморт одного объявления
+GET http://127.0.0.1:5000/api/posts/14
+content-type: application/json
+####
+
+####
+# добавление объявления 1
+POST http://127.0.0.1:5000/api/posts/
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzI2NTIsIm5iZiI6MTYwODM3MjY1MiwianRpIjoiMTNmZTE5YWYtODJmNC00ODZlLTk1MTAtNGFlZDdiNTVmOWNmIiwiZXhwIjoxNjA4OTc3NDUyLCJpZGVudGl0eSI6IjYiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.8vAw77f_UIgadWJqoIj8Zz844Ya2rF4paS1_67BbM0E
+
+{
+  "title": "test1",
+  "content": "This is test content"
+}
+####
+
+####
+# добавление объявления 2
+POST http://127.0.0.1:5000/api/posts/
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzQ4NjYsIm5iZiI6MTYwODM3NDg2NiwianRpIjoiZjk4N2QxNDYtZTlhZi00MTRhLTkyNjktMjJhZWM0ZjQwN2MxIiwiZXhwIjoxNjA4OTc5NjY2LCJpZGVudGl0eSI6IjgiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.BcVhXXTJJT9y9S-P5MNon4WDLUCjImKJvQp3LL_AgkE
+
+{
+  "title": "test2",
+  "content": "This is test content"
+}
+####
+
+# удаление объявления
+DELETE http://127.0.0.1:5000/api/posts/14
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzQ4NjYsIm5iZiI6MTYwODM3NDg2NiwianRpIjoiZjk4N2QxNDYtZTlhZi00MTRhLTkyNjktMjJhZWM0ZjQwN2MxIiwiZXhwIjoxNjA4OTc5NjY2LCJpZGVudGl0eSI6IjgiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.BcVhXXTJJT9y9S-P5MNon4WDLUCjImKJvQp3LL_AgkE
+####
+
+# обновление объявления
+PUT http://127.0.0.1:5000/api/posts/13
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2MDgzNzQ4NjYsIm5iZiI6MTYwODM3NDg2NiwianRpIjoiZjk4N2QxNDYtZTlhZi00MTRhLTkyNjktMjJhZWM0ZjQwN2MxIiwiZXhwIjoxNjA4OTc5NjY2LCJpZGVudGl0eSI6IjgiLCJmcmVzaCI6ZmFsc2UsInR5cGUiOiJhY2Nlc3MifQ.BcVhXXTJJT9y9S-P5MNon4WDLUCjImKJvQp3LL_AgkE
+
+{
+  "title": "test2",
+  "content": "This is new new test content"
+}
+
+####
+
