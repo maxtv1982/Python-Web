@@ -11,9 +11,7 @@
   > Для пользовательского html можно использовать пример в [каталоге](html/) с ДЗ.
   
  
-docker pull nginx   # скачиваем образ
-# в рабочей директории создаем папку docker-test, в которую скопировал папку html c index.html
-# в папке docker-test создаем Dockerfile
+docker pull nginx   # скачиваем образ, в рабочей директории создаем папку 1, в которую скопировал папку html c index.html, в папке 1 создаем Dockerfile
 docker build -t my-nginx  docker-test  # создаём свой образ на основе Dockerfile
 docker run --name my-nginx-server -d -p 8090:80 my-nginx  # запускаем контейнер
 # проверяем localhost:8090

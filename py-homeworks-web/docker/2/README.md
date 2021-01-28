@@ -8,25 +8,15 @@
 3. Проверьте Docker-файл на передачу переменных окружения в Flask
 4. Docker-контейнер запускается с приложением Flask
 
-<details><summary>Подсказки: </summary>  
-  1. Хорошим тоном будет пример команд с последовательным запуском контейнеров и объединением их в сеть для БД и Flask.  
-  2. В качестве простого решения можно подключаться к БД на локальной хост машине.  
-</details>  
-
-- Приложите в репозиторий Dockerfile и файлы приложения.  
-- В Readme.md описать типовые команды для запуска контейнера c backend сервером.  
-      
-## Задание 3 *(не обязательное)
- Создать конфигурацию для последовательного запуска 3-х контейнеров: flask, postgres, nginx.  
- Контейнеры объединяются в сеть, которые работают в связке:
- - Nginx работает в качестве proxy-http для пересылки динамических запросов к Flask или возвращая статические html файлы.  
- - PostgreSQL запускается до Flask, т.к. rest api может зависетьот БД.  
- - Flask запускается через Gunicorn, отвечая http клиенту через Nginx.
- 
- В Readme.md перечислить команды для запуска или описать конфигурацию `docker-compose.yml` для запуска одной командой.
- 
- Полезные материалы для Задания 3:
- - [Введение в docker-compose](https://dker.ru/docs/docker-compose/getting-started/) 
- - https://the-bosha.ru/2017/01/04/zapusk-flask-prilozheniia-c-uwsgi-virtualenv-i-nginx/
- - https://habr.com/ru/post/352266/  `Темы Настройка Gunicorn и Supervisor` и `Настройка Nginx`
- - https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-gunicorn-and-nginx-on-ubuntu-18-04-ru   
+docker build -t my-flask 2   # создаём свой образ на основе Dockerfile
+docker network create --driver=bridge --attachable flask-net  # создаём сеть
+# При запуске контейнеров подключаемся к этой сети
+docker run -dit --name flask-server -p 8900:5000 --network flask-net my-flask
+docker run -it --name pg-docker -e POSTGRES_PASSWORD=1234 -e POSTGRES_USER=postgres -e POSTGRES_DB=flask_home -d -p 5432:5432 --network flask-net postgres
+# подключаемся к контейнеру с flask приложением для запуска миграции.
+docker exec -ti flask-server sh
+    cd app
+    flask db init
+    export FLASK_APP=run.py
+    flask db migrate -m "Initial migration"
+    flask db upgrade
