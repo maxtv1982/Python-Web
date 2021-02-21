@@ -1,0 +1,64 @@
+####
+# просмотр пользователь
+GET http://127.0.0.1:8080/api/user/30
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyOX0.VNHwSpspiMyqc16p47J-i4szcvBum4ladkyRYieW1WU
+####
+####
+# регистрация
+POST http://127.0.0.1:8080/api/user/login
+content-type: application/json
+
+{
+  "username": "tetе",
+  "email": "maxmail.rttuе",
+  "password": "rty2ttе2"
+}
+#30 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMH0.2DnupdxoNJ3edBCtMDlsw6jt0a2aDmalMyBPXV-5E3o
+#31 eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMX0.Kabjjq_8ki97G4EyeUsyoNY4omOzEgL8JMJJQ-QLLbA
+####
+####
+# удаление пользователь
+DELETE http://127.0.0.1:8080/api/user/28
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyN30.DEWoL7EaMo4SWzoeNoO-TBuRXgK2mn8nh6bJJaNJY9g
+####
+
+##################################
+
+# просморт объявления
+GET http://127.0.0.1:8080/api/post/4
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNX0.F-oARaQeBIqSezYIs97ETyPbFiL3BHti9lHaUG6GScs
+####
+# просморт всех объявлений
+GET http://127.0.0.1:8080/api/posts/
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMH0.2DnupdxoNJ3edBCtMDlsw6jt0a2aDmalMyBPXV-5E3o
+####
+# добавление объявления 1
+POST http://127.0.0.1:8080/api/post/
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyOX0.VNHwSpspiMyqc16p47J-i4szcvBum4ladkyRYieW1WU
+
+{
+  "title": "test4",
+  "content": "This is 3test content"
+}
+####
+# добавление объявления 2
+POST http://127.0.0.1:8080/api/post/
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMX0.Kabjjq_8ki97G4EyeUsyoNY4omOzEgL8JMJJQ-QLLbA
+
+{
+  "title": "test3",
+  "content": "This is 3test content"
+}
+####
+
+# удаление объявления
+DELETE http://127.0.0.1:8080/api/post/11
+content-type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozMX0.Kabjjq_8ki97G4EyeUsyoNY4omOzEgL8JMJJQ-QLLbA
+####

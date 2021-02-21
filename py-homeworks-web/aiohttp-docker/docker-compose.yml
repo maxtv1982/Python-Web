@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  pg_db:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=1234
+      - POSTGRES_USER=admin
+      - POSTGRES_DB=aiohttp
+    ports:
+      - 5432:5432
+
+  app-flask:
+    restart: always
+    build: .
+    ports:
+      - 8080:8080
+    depends_on:
+      - pg_db
+
