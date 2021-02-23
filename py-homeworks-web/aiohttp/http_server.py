@@ -140,7 +140,7 @@ class PostView(web.View):
                 return web.HTTPOk()
         raise web.HTTPNotFound()
 
-
+# вывод всех объявлений - почему-то выводит только первое - в чём причина?
 class PostsView(web.View):
 
     async def get(self):
