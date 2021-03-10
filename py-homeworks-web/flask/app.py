@@ -10,3 +10,5 @@ app.config.from_object(config.Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 jwt = JWTManager(app)
+
+import models

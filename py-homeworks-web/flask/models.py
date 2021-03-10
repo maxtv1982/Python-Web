@@ -46,12 +46,12 @@ class BaseModelMixin:
             raise errors.BadLuck
 
 
-class User(db.Model, BaseModelMixin):
+class Users(db.Model, BaseModelMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password = db.Column(db.String(128))
-    posts = db.relationship('Post', backref='user')
+    posts = db.relationship('Post', backref='users')
 
     def __init__(self, username, email, password):
         self.username = username
@@ -83,7 +83,7 @@ class Post(db.Model, BaseModelMixin):
     title = db.Column(db.String(50))
     content = db.Column(db.String(255))
     created_at = db.Column(db.DateTime(), default=datetime.utcnow)
-    user_id = db.Column(db.Integer(), db.ForeignKey('user.id'))
+    user_id = db.Column(db.Integer(), db.ForeignKey('users.id'))
 
     def __init__(self, title, content):
         self.title = title
@@ -102,4 +102,4 @@ class Post(db.Model, BaseModelMixin):
             "content": self.content,
             "created_at": self.created_at,
             "user_id": self.user_id,
-        }
+                }

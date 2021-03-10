@@ -6,19 +6,19 @@ import datetime
 
 from app import app
 from validator import validate
-from models import User, Post
+from models import Users, Post
 from schema import USER_CREATE, POST_CREATE
 
 
 class UserView(MethodView):
 
     def get(self, user_id):
-        user = User.by_id(user_id)
+        user = Users.by_id(user_id)
         return jsonify(user.to_dict())
 
     @validate('json', USER_CREATE)
     def post(self):
-        user = User(**request.json)
+        user = Users(**request.json)
         user.set_password(request.json['password'])
         user.add()
 
